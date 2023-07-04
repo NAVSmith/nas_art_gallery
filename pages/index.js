@@ -5,16 +5,14 @@ import { Fragment } from "react";
 import { ArtPieces } from "../components/pieces/pieces.js";
 import { Spotlight } from "../components/spotlight/spotlight.js";
 
-export default function HomePage({
-    pieces,
-    artPieceInfo,
-
+export default function HomePage({    
+    artPieceInfo
 }) {
-    console.log("respone form api", pieces);
+    console.log("respone form api", artPieceInfo);
     return (
         <Fragment>
-            <ArtPieces pieces={pieces} />
-            <Spotlight pieces={pieces} 
+            <ArtPieces artPieceInfo={artPieceInfo} />
+            <Spotlight 
             artPieceInfo={artPieceInfo}
           />
         </Fragment>

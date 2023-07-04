@@ -5,14 +5,14 @@ import Image from "next/image";
 import styled from "styled-components";
 
 // random index creator
-function getARandomKunst(data) {
+function getARandomPiece(data) {
     return Math.floor(Math.random() * data.length );
 }
 
-export function Spotlight({ pieces, artPieceInfo, piecesinfoSeter }) {
-    const index = getARandomKunst(pieces);
+export function Spotlight({ artPieceInfo}) {
+    const index = getARandomPiece(artPieceInfo);
 
-    const spotlightpiece = pieces[index];
+    const spotlightpiece = artPieceInfo[index];
     console.log('spotlight', spotlightpiece);
     return (
         <Fragment>

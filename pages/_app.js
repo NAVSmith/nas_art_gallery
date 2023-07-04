@@ -30,23 +30,25 @@ export default function App({ Component, pageProps }) {
         { defaultValue: [] }
     );
 
-    // populating to the intial data into the state
-    setArtPieceInfo(data);
-    console.log("artPieceInfo", artPieceInfo);
+    
+    
     // if the data is not loaded yet from the api and the state is not populated yet in the local state show load screen
-    if (isLoading || !artPieceInfo) {
+    if (isLoading) {
         return (
             <>
                 <div>Loading the data</div>
             </>
         );
     }
+    // after it finished to get the the data from the api set set the state and print the page 
+    // populating to the initial data into the state
+    setArtPieceInfo(data);
+    console.log("artPieceInfo", artPieceInfo);
     return (
         <>
             <GlobalStyle />
             <Component
                 {...pageProps}
-                pieces={data}
                 artPieceInfo={artPieceInfo}
             />
         </>
