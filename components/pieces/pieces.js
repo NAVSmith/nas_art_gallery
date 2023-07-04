@@ -4,22 +4,22 @@ import { Fragment } from "react";
 import styled from "styled-components";
 
 // importing components
-import { StuckPreview } from "../kunst_preview/kunst_preview.js";
+import { PiecePreview } from "../piece_preview/piece_preview.js";
 
-export function KunstStuecke({ stuecke }) {
-    console.log(stuecke);
+export function ArtPieces({ pieces }) {
+    console.log(pieces);
     return (
         <ArtList>
             {/* start iterating to create the art pieces  */}
-            {stuecke &&
-                stuecke.map((stuck) => {
+            {pieces &&
+                pieces.map((piece) => {
                     return (
-                        <ArtEntry key={stuck.slug}>
-                            <StuckPreview
-                                title={stuck.name}
-                                artistName={stuck.artist}
-                                imageUrl={stuck.imageSource}
-                                slug={stuck.slug}
+                        <ArtEntry key={piece.slug}>
+                            <PiecePreview
+                                title={piece.name}
+                                artistName={piece.artist}
+                                imageUrl={piece.imageSource}
+                                slug={piece.slug}
                             />
                         </ArtEntry>
                     );

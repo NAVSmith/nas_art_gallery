@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 import styled from "styled-components";
 
-export function StuckPreview({ title, artistName, imageUrl, slug }) {
+export function PiecePreview({ title, artistName, imageUrl, slug }) {
     return (
         <Fragment>
             <Fig>

@@ -9,20 +9,20 @@ function getARandomKunst(data) {
     return Math.floor(Math.random() * data.length );
 }
 
-export function Spotlight({ stuecke, kunstStueckeData, kunstDataSeter }) {
-    const index = getARandomKunst(stuecke);
+export function Spotlight({ pieces, artPieceInfo, piecesinfoSeter }) {
+    const index = getARandomKunst(pieces);
 
-    const spotlightStuck = stuecke[index];
-    console.log('spotlight', spotlightStuck);
+    const spotlightpiece = pieces[index];
+    console.log('spotlight', spotlightpiece);
     return (
         <Fragment>
-            <h1>{spotlightStuck.name}</h1>
+            <h1>{spotlightpiece.name}</h1>
             <div>
                 <Image
                     style={{ objectFit: "cover" }}
                     
-                    src={spotlightStuck.imageSource} // Replace with the path to your image
-                    alt={spotlightStuck.slug}
+                    src={spotlightpiece.imageSource} // Replace with the path to your image
+                    alt={spotlightpiece.slug}
                     width={500} // Specify the desired width of the image
                     height={300} // Specify the desired height of the image
                 />

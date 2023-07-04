@@ -2,21 +2,21 @@
 import { Fragment } from "react";
 
 // importing components
-import { KunstStuecke } from "../components/kunst_stuecke/kunst_stuecke.js";
+import { ArtPieces } from "../components/pieces/pieces.js";
 import { Spotlight } from "../components/spotlight/spotlight.js";
 
 export default function HomePage({
-    stuecke,
-    kunstStueckeData,
-    kunstDataSeter,
+    pieces,
+    artPieceInfo,
+
 }) {
-    console.log("respone form api", stuecke);
+    console.log("respone form api", pieces);
     return (
         <Fragment>
-            <KunstStuecke stuecke={stuecke} />
-            <Spotlight stuecke={stuecke} 
-            kunstStueckeData={kunstStueckeData}
-            kunstDataSeter={kunstDataSeter} />
+            <ArtPieces pieces={pieces} />
+            <Spotlight pieces={pieces} 
+            artPieceInfo={artPieceInfo}
+          />
         </Fragment>
     );
 }
