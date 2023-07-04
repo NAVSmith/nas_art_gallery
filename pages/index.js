@@ -1,10 +1,14 @@
-export default function HomePage({ArtStuecke}) {
-  console.log('respone form api' ,ArtStuecke);
-  return (
-    <div>
-      <p>this is the data</p>
-    </div>
-  );
+import { Fragment } from "react";
+import { KunstStuecke } from "../components/kunst_stuecke/kunst_stuecke.js";
+
+export default function HomePage({ stuecke }) {
+    console.log("respone form api", stuecke);
+    return (
+        <Fragment>
+            <KunstStuecke 
+            stuecke={stuecke} />
+        </Fragment>
+    );
 }
 
 /*

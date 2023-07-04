@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
             <GlobalStyle />
             <Component
                 {...pageProps}
-                ArtStuecke={isLoading || error ? [] : data}
+                stuecke={isLoading || error ? [] : data}
             />
         </>
     );
