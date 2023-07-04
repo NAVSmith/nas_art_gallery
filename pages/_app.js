@@ -23,20 +23,18 @@ export default function App({ Component, pageProps }) {
         "https://example-apis.vercel.app/api/art",
         fetcherFunc
     );
-    console.log("the data ", data);
-    console.log("loading? ", isLoading);
-    console.log("the error:", error);
+    
     // state handling. setting the art pieces data
-    const [kunstStueckeData, setKunstStueckeData] = useImmerLocalStorageState(
-        "kunstStueckeData",
+    const [artPieceInfo, setArtPieceInfo] = useImmerLocalStorageState(
+        "artPieceInfo",
         { defaultValue: [] }
     );
 
     // populating to the intial data into the state
-    setKunstStueckeData(data);
-    console.log("kunstStueckeData", kunstStueckeData);
-// if the data is not loaded yet from the api and not no pupolated in the local state show load screen
-    if (isLoading || !kunstStueckeData) {
+    setArtPieceInfo(data);
+    console.log("artPieceInfo", artPieceInfo);
+    // if the data is not loaded yet from the api and the state is not populated yet in the local state show load screen
+    if (isLoading || !artPieceInfo) {
         return (
             <>
                 <div>Loading the data</div>
@@ -48,9 +46,8 @@ export default function App({ Component, pageProps }) {
             <GlobalStyle />
             <Component
                 {...pageProps}
-                stuecke={data}
-                kunstStueckeData={kunstStueckeData}
-                kunstDataSeter={setKunstStueckeData}
+                pieces={data}
+                artPieceInfo={artPieceInfo}
             />
         </>
     );
