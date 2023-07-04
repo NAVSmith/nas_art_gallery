@@ -4,7 +4,7 @@ import { Fragment } from "react";
 // third party style
 import styled from "styled-components";
 
-// local imports 
+// importing components 
 import { StuckPreview } from "../kunst_preview/kunst_preview.js";
 
 export function KunstStuecke({ stuecke }) {

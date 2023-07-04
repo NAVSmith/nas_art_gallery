@@ -1,31 +1,42 @@
+
+
+//importing react 
 import { Fragment } from "react";
+
+
+// importing components
 import { KunstStuecke } from "../components/kunst_stuecke/kunst_stuecke.js";
 
 export default function HomePage({ stuecke }) {
     console.log("respone form api", stuecke);
     return (
         <Fragment>
-            <KunstStuecke 
-            stuecke={stuecke} />
+            <KunstStuecke stuecke={stuecke} />
         </Fragment>
     );
 }
 
 /*
-Tasks
+User Story 2: Spotlight Piece
+
+Value Proposition
+
+As an art enthusiast
+
+I want to see a spotlight piece
+
+so that I can get inspirational highlights.
 
 Acceptance Criteria
 
- All art pieces are displayed as a list 🖼️
- Each art piece's image is displayed 🖼️
- Each art piece's title is displayed 🖼️
- Each art piece's artist is displayed 🖼️
+ One art piece is picked at random to show as a spotlight piece
+ The art piece image is displayed 🖼️
+ The art piece artist is displayed 🖼️
+Tasks
 
- Fetch all art pieces with SWR in pages/index.js
- Create the component ArtPieces to render a list
- ArtPieces props: pieces
- Create the component ArtPiecePreview
- ArtPiecePreview props: image, title, artist
- All acceptance criteria marked with 🖼️ are covered by component testing
+ Write function to pick one art piece at random
+ Create the component Spotlight
+ Spotlight props: image, artist
+
 
 */
