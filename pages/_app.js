@@ -32,14 +32,25 @@ export default function App({ Component, pageProps }) {
         { defaultValue: [] }
     );
 
+    // populating to the intial data into the state
+    setKunstStueckeData(data);
+    console.log("kunstStueckeData", kunstStueckeData);
+// if the data is not loaded yet from the api and not no pupolated in the local state show load screen
+    if (isLoading || !kunstStueckeData) {
+        return (
+            <>
+                <div>Loading the data</div>
+            </>
+        );
+    }
     return (
         <>
             <GlobalStyle />
             <Component
                 {...pageProps}
-                stuecke={isLoading || error ? [] : data}
+                stuecke={data}
                 kunstStueckeData={kunstStueckeData}
-                kunstDataSeter={setKunstStueckeData}   
+                kunstDataSeter={setKunstStueckeData}
             />
         </>
     );

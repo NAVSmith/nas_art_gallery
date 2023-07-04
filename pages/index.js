@@ -1,17 +1,22 @@
-
-
-//importing react 
+//importing react
 import { Fragment } from "react";
-
 
 // importing components
 import { KunstStuecke } from "../components/kunst_stuecke/kunst_stuecke.js";
+import { Spotlight } from "../components/spotlight/spotlight.js";
 
-export default function HomePage({ stuecke }) {
+export default function HomePage({
+    stuecke,
+    kunstStueckeData,
+    kunstDataSeter,
+}) {
     console.log("respone form api", stuecke);
     return (
         <Fragment>
             <KunstStuecke stuecke={stuecke} />
+            <Spotlight stuecke={stuecke} 
+            kunstStueckeData={kunstStueckeData}
+            kunstDataSeter={kunstDataSeter} />
         </Fragment>
     );
 }
