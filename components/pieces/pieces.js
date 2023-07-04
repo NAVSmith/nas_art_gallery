@@ -6,13 +6,13 @@ import styled from "styled-components";
 // importing components
 import { PiecePreview } from "../piece_preview/piece_preview.js";
 
-export function ArtPieces({ pieces }) {
-    console.log(pieces);
+export function ArtPieces({ artPieceInfo }) {
+    console.log('in the art pieces',artPieceInfo);
     return (
         <ArtList>
             {/* start iterating to create the art pieces  */}
-            {pieces &&
-                pieces.map((piece) => {
+            {artPieceInfo &&
+                artPieceInfo.map((piece) => {
                     return (
                         <ArtEntry key={piece.slug}>
                             <PiecePreview
