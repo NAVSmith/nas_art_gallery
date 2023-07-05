@@ -9,11 +9,13 @@ export default function ArtPieceDetails({ artPieceInfo }) {
     // get the slug of the piece as it a unique identifier
     const router = useRouter();
     const calledPieceSlug = router.asPath.split("/").pop();
-    console.log("the slug", calledPieceSlug);
+
+    // console.log(router.back());
     const calledPiece = artPieceInfo.find((Piece) => {
         return Piece.slug === calledPieceSlug;
     });
-    console.log("called piece", calledPiece);
+
+
     return (
         <Fragment>
             <Container>
@@ -22,6 +24,7 @@ export default function ArtPieceDetails({ artPieceInfo }) {
                 <Info>Artist: {calledPiece.artist}</Info>
                 <Info>Year: {calledPiece.year}</Info>
                 <Info>Genre: {calledPiece.genre}</Info>
+                <Button onClick={() => router.back()}>Go Back</Button>
             </Container>
         </Fragment>
     );
@@ -48,6 +51,16 @@ const Title = styled.h1`
 
 const Info = styled.p`
     margin-bottom: 4px;
+`;
+
+const Button = styled.button`
+    padding: 8px 16px;
+    background-color: #f0ead6;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 16px;
 `;
 
 // Acceptance Criteria
