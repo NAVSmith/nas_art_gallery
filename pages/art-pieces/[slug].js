@@ -1,9 +1,12 @@
 // import components
+import { FavoriteButton } from "/components/favorite_button/favorite_button.js";
+
+//import react and next
 import { Fragment } from "react";
-import { ArtPieces } from "../../components/pieces/pieces.js";
 import { useRouter } from "next/router";
 // import styles
 import styled from "styled-components";
+import Image from "next/image";
 
 export default function ArtPieceDetails({ artPieceInfo }) {
     // get the slug of the piece as it a unique identifier
@@ -15,13 +18,23 @@ export default function ArtPieceDetails({ artPieceInfo }) {
         return Piece.slug === calledPieceSlug;
     });
 
-
     return (
         <Fragment>
             <Container>
-                <Image src={calledPiece.imageSource} alt={calledPiece.name} />
                 <Title>{calledPiece.name}</Title>
-                <Info>Artist: {calledPiece.artist}</Info>
+                <Artist>{calledPiece.artist}</Artist>
+                <ImageContainer>
+                <FavoriteButtonContainer>
+                        <FavoriteButton />
+                    </FavoriteButtonContainer>
+                    <Imagestyle
+                        src={calledPiece.imageSource}
+                        alt={calledPiece.name}
+                        width={450} // Specify the desired width of the image
+                        height={300} // Specify the desired height of the image
+                    />
+                    
+                </ImageContainer>
                 <Info>Year: {calledPiece.year}</Info>
                 <Info>Genre: {calledPiece.genre}</Info>
                 <Button onClick={() => router.back()}>Go Back</Button>
@@ -35,17 +48,32 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
 `;
 
-const Image = styled.img`
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+const ImageContainer = styled.div`
+    width: 100%;
+    height: 100%;
     margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
-const Title = styled.h1`
-    font-size: 24px;
+const Imagestyle = styled(Image)`
+    object-fit: cover; 
+    
+`;
+
+const Title = styled.h2`
+    font-size: 2rem;
+    margin-bottom: 8px;
+`;
+
+const Artist = styled.h2`
+    font-size: 1.6rem;
     margin-bottom: 8px;
 `;
 
@@ -54,30 +82,18 @@ const Info = styled.p`
 `;
 
 const Button = styled.button`
-    padding: 8px 16px;
+    padding: 1rem 2rem;
     background-color: #f0ead6;
     color: #333;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 16px;
+    margin-top: 1rem;
 `;
 
-// Acceptance Criteria
-
-//  Clicking an art piece from the list shows the detail page
-//  The art piece image is displayed 🖼️
-//  The art piece title is displayed 🖼️
-//  The art piece artist is displayed 🖼️
-//  The art piece year is displayed 🖼️
-//  The art piece genre is displayed 🖼️
-//  A back-button is displayed 🖼️
-//  Clicking the back-button shows the list view
-// Tasks
-
-//  Create the component ArtPieceDetails
-//  ArtPieceDetails props: image, title, artist, year, genre
-//  Create the page pages/art-pieces/[slug] that renders ArtPieceDetails
-//  Read the query parameter slug from next/router
-//  Use the slug to find the art piece to display
-//  All acceptance criteria marked with 🖼️ are covered by component testing
+const FavoriteButtonContainer = styled.div`
+    position: relative;
+    top: 4rem;
+    right: -12rem;
+    z-index: 10;
+`;

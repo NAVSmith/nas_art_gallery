@@ -39,7 +39,7 @@ const ArtList = styled.ul`
 `;
 
 const ArtEntry = styled.li`
-    width: 25rem;
+    width: 28rem;
     /* min-width: 10rem; */
-    height: 25rem;
+    height: 20rem;
 `;
