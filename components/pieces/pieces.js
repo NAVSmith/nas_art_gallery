@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { PiecePreview } from "../piece_preview/piece_preview.js";
 
 export function ArtPieces({ artPieceInfo }) {
-    console.log('in the art pieces',artPieceInfo);
+    console.log("in the art pieces", artPieceInfo);
     return (
         <ArtList>
             {/* start iterating to create the art pieces  */}
