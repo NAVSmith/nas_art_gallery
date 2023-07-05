@@ -10,6 +10,9 @@ import { useImmerLocalStorageState } from "../hooks/useImmerLocalStorageState.js
 // importing fetching package
 import useSWR from "swr";
 
+// import components
+import { PagesLayout } from "../components/layout/pages_layout.js";
+
 // fetcher from api
 async function fetcherFunc(...arg) {
     console.log("start fetching the data");
@@ -23,15 +26,13 @@ export default function App({ Component, pageProps }) {
         "https://example-apis.vercel.app/api/art",
         fetcherFunc
     );
-    
+
     // state handling. setting the art pieces data
     const [artPieceInfo, setArtPieceInfo] = useImmerLocalStorageState(
         "artPieceInfo",
         { defaultValue: [] }
     );
 
-    
-    
     // if the data is not loaded yet from the api and the state is not populated yet in the local state show load screen
     if (isLoading) {
         return (
@@ -40,17 +41,16 @@ export default function App({ Component, pageProps }) {
             </>
         );
     }
-    // after it finished to get the the data from the api set set the state and print the page 
+    // after it finished to get the the data from the api set set the state and print the page
     // populating to the initial data into the state
     setArtPieceInfo(data);
     console.log("artPieceInfo", artPieceInfo);
     return (
-        <>
-            <GlobalStyle />
-            <Component
-                {...pageProps}
-                artPieceInfo={artPieceInfo}
-            />
-        </>
+        <Fragment>
+            <PagesLayout>
+                <GlobalStyle />
+                <Component {...pageProps} artPieceInfo={artPieceInfo} />
+            </PagesLayout>
+        </Fragment>
     );
 }
