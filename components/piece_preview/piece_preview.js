@@ -1,24 +1,28 @@
 import Image from "next/image";
-import { Fragment } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Fragment, useReducer } from "react";
 import styled from "styled-components";
 
 export function PiecePreview({ title, artistName, imageUrl, slug }) {
     return (
         <Fragment>
             <Fig>
-                <ImgContain>
-                    <Image
-                        style={{ objectFit: "cover" }}
-                        sizes="(max-width: 768px) 100vw,
+                <Link href={"/art-pieces/" + slug} passHref={true} >
+                        <ImgContain>
+                            <Image
+                                style={{ objectFit: "cover" }}
+                                sizes="(max-width: 768px) 100vw,
                         (max-width: 1200px) 50vw,
                         33vw"
-                        src={imageUrl} // Replace with the path to your image
-                        alt={slug}
-                        width={500} // Specify the desired width of the image
-                        height={300} // Specify the desired height of the image
-                    />
-                </ImgContain>
-                <Cap>{`${artistName}: ${title}`}</Cap>
+                                src={imageUrl} // Replace with the path to your image
+                                alt={slug}
+                                width={500} // Specify the desired width of the image
+                                height={300} // Specify the desired height of the image
+                            />
+                        </ImgContain>    
+                    <Cap>{`${artistName}: ${title}`}</Cap>
+                </Link>
             </Fig>
         </Fragment>
     );

@@ -9,11 +9,10 @@ import { Fragment } from "react";
 import { Navig } from "../navigation/navigation";
 
 export function PagesLayout({ children }) {
-
     return (
         <Fragment>
-            <Navig/>
-            { children }
+            {children}
+            <Navig />
         </Fragment>
-    )
+    );
 }
