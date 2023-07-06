@@ -61,6 +61,7 @@ export default function App({ Component, pageProps }) {
     }
     // after it finished to get the the data from the api set set the state and print the page
     // populating to the initial data into the state
+    // make it so it will only populate once 
     setArtPieceInfo(
         !artPieceInfo.length > 0
             ? data.map((piece) => ({

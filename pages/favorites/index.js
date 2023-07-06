@@ -9,8 +9,9 @@ export default function AllArtPieces({ artPieceInfo, handleToggleFavorite }) {
     return (
         <Fragment>
             <ArtPieces
-                artPieceInfo={favoriteArtPieces}
+                artPieceInfo={artPieceInfo}
                 handleToggleFavorite={handleToggleFavorite}
+                favoriteArtPieces={favoriteArtPieces}
             />
         </Fragment>
     );

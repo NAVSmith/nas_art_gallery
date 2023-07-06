@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function ArtPieceDetails({
     artPieceInfo,
-    handleToggleFavorite
+    handleToggleFavorite,
 }) {
     // get the slug of the piece as it a unique identifier
     const router = useRouter();
@@ -20,6 +20,7 @@ export default function ArtPieceDetails({
     const calledPiece = artPieceInfo.find((Piece) => {
         return Piece.slug === calledPieceSlug;
     });
+
 
     return (
         <Fragment>
@@ -44,6 +45,16 @@ export default function ArtPieceDetails({
                 </ImageContainer>
                 <Info>Year: {calledPiece.year}</Info>
                 <Info>Genre: {calledPiece.genre}</Info>
+                <ColorList>
+                    {calledPiece.colors.map((color, i) => {                    
+                        return (
+                            <Fragment key={i}>
+                                <li style={{backgroundColor: color, width: '3rem', height: '3rem', borderRadius: '95%', border: '1px solid #000'}}></li>
+                            </Fragment>
+                        )
+
+                    })} 
+                </ColorList>
                 <Button onClick={() => router.back()}>Go Back</Button>
             </Container>
         </Fragment>
@@ -102,4 +113,13 @@ const FavoriteButtonContainer = styled.div`
     top: 4rem;
     right: -12rem;
     z-index: 10;
+`;
+
+export const ColorList = styled.ul`
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0;
 `;
