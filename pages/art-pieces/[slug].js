@@ -8,7 +8,10 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Image from "next/image";
 
-export default function ArtPieceDetails({ artPieceInfo }) {
+export default function ArtPieceDetails({
+    artPieceInfo,
+    handleToggleFavorite
+}) {
     // get the slug of the piece as it a unique identifier
     const router = useRouter();
     const calledPieceSlug = router.asPath.split("/").pop();
@@ -24,8 +27,13 @@ export default function ArtPieceDetails({ artPieceInfo }) {
                 <Title>{calledPiece.name}</Title>
                 <Artist>{calledPiece.artist}</Artist>
                 <ImageContainer>
-                <FavoriteButtonContainer>
-                        <FavoriteButton />
+                    <FavoriteButtonContainer>
+                        <FavoriteButton
+                            slug={calledPiece.slug}
+                            handleToggleFavorite={handleToggleFavorite}
+                            artPieceInfo={artPieceInfo}
+                            isFavorite={calledPiece.isFavorite}
+                        />
                     </FavoriteButtonContainer>
                     <Imagestyle
                         src={calledPiece.imageSource}
@@ -33,7 +41,6 @@ export default function ArtPieceDetails({ artPieceInfo }) {
                         width={450} // Specify the desired width of the image
                         height={300} // Specify the desired height of the image
                     />
-                    
                 </ImageContainer>
                 <Info>Year: {calledPiece.year}</Info>
                 <Info>Genre: {calledPiece.genre}</Info>
@@ -63,8 +70,7 @@ const ImageContainer = styled.div`
 `;
 
 const Imagestyle = styled(Image)`
-    object-fit: cover; 
-    
+    object-fit: cover;
 `;
 
 const Title = styled.h2`

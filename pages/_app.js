@@ -32,7 +32,25 @@ export default function App({ Component, pageProps }) {
         "artPieceInfo",
         { defaultValue: [] }
     );
+    console.log('intial artPieceInfo', artPieceInfo, typeof  artPieceInfo);
 
+    function handleToggleFavorite(slug, previousArtPieceInfo) {
+        const artPiece = artPieceInfo.find((piece) => piece.slug === slug);
+        artPiece.isFavorite = !artPiece.isFavorite;
+
+        console.log(artPieceInfo);
+        setArtPieceInfo(
+            previousArtPieceInfo.map((piece) => {
+                if (piece.slug === slug) {
+                    return artPiece;
+                } else {
+                    return piece;
+                }
+            })
+        );
+    }
+
+    console.log(artPieceInfo);
     // if the data is not loaded yet from the api and the state is not populated yet in the local state show load screen
     if (isLoading) {
         return (
@@ -43,13 +61,25 @@ export default function App({ Component, pageProps }) {
     }
     // after it finished to get the the data from the api set set the state and print the page
     // populating to the initial data into the state
-    setArtPieceInfo(data);
+    setArtPieceInfo(
+        !artPieceInfo.length > 0
+            ? data.map((piece) => ({
+                  ...piece,
+                  isFavorite: false,
+                  comments: [],
+              }))
+            : [...artPieceInfo]
+    );
     console.log("artPieceInfo", artPieceInfo);
     return (
         <Fragment>
             <PagesLayout>
                 <GlobalStyle />
-                <Component {...pageProps} artPieceInfo={artPieceInfo} />
+                <Component
+                    {...pageProps}
+                    artPieceInfo={artPieceInfo}
+                    handleToggleFavorite={handleToggleFavorite}
+                />
             </PagesLayout>
         </Fragment>
     );

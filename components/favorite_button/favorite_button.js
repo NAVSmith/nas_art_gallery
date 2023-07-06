@@ -1,9 +1,19 @@
 import Image from "next/image.js";
 import styled from "styled-components";
 
-export function FavoriteButton({}) {
+export function FavoriteButton({
+    slug,
+    artPieceInfo,
+    handleToggleFavorite,
+    isFavorite
+}) {
+    console.log(handleToggleFavorite);
     return (
-        <Button type="button">
+        <Button
+            type="button"
+            onClick={() => handleToggleFavorite(slug, artPieceInfo)}
+            isFavorite={isFavorite}
+        >
             <Image src="/heart.svg" width={36} height={36} alt="favored" />
         </Button>
     );
@@ -19,4 +29,6 @@ const Button = styled.button`
     &:hover {
         cursor: pointer;
     }
+    background-color: ${({ isFavorite }) =>
+        isFavorite ? "lightcoral" : "white"};
 `;

@@ -7,28 +7,38 @@ import styled from "styled-components";
 // import components
 import { FavoriteButton } from "../favorite_button/favorite_button";
 
-export function PiecePreview({ title, artistName, imageUrl, slug }) {
+export function PiecePreview({
+    title,
+    artistName,
+    imageUrl,
+    slug,
+    isFavorite,
+    artPieceInfo,
+    handleToggleFavorite,
+}) {
     return (
         <Fragment>
-            <Fig>  
-            
-                
-                    <ImgContain>
+            <Fig>
+                <ImgContain>
                     <FavoriteButtonContainer>
-                    <FavoriteButton />
-            </FavoriteButtonContainer>   
-                    <Link href={"/art-pieces/" + slug} passHref={true}>     
+                        <FavoriteButton
+                            slug={slug}
+                            handleToggleFavorite={handleToggleFavorite}
+                            artPieceInfo={artPieceInfo}
+                            isFavorite={isFavorite}
+                        />
+                    </FavoriteButtonContainer>
+                    <Link href={"/art-pieces/" + slug} passHref={true}>
                         <Image
-                            style={{ objectFit: "cover" }}                 
+                            style={{ objectFit: "cover" }}
                             src={imageUrl} // Replace with the path to your image
                             alt={slug}
                             width={450} // Specify the desired width of the image
                             height={300} // Specify the desired height of the image
                         />
-                        </Link>
-                    </ImgContain>
-                    <Cap>{`${artistName}: ${title}`}</Cap>
-                
+                    </Link>
+                </ImgContain>
+                <Cap>{`${artistName}: ${title}`}</Cap>
             </Fig>
         </Fragment>
     );

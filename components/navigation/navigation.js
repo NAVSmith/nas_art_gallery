@@ -18,6 +18,11 @@ const pages = [
         pathTo: "/art-pieces",
         name: "Gallrey",
     },
+    {
+        slug: "favorites",
+        pathTo: "/favorites",
+        name: "Favorite Gallery",
+    },
 ];
 
 

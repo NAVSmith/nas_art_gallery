@@ -6,12 +6,29 @@ import styled from "styled-components";
 // importing components
 import { PiecePreview } from "../piece_preview/piece_preview.js";
 
-export function ArtPieces({ artPieceInfo }) {
+export function ArtPieces({ artPieceInfo, handleToggleFavorite, favoriteArtPieces}) {
     console.log("in the art pieces", artPieceInfo);
     return (
         <ArtList>
             {/* start iterating to create the art pieces  */}
-            {artPieceInfo &&
+            
+            {favoriteArtPieces?
+                favoriteArtPieces.map((piece) => {
+                    return (
+                        <ArtEntry key={piece.slug}>
+                            <PiecePreview
+                                title={piece.name}
+                                artistName={piece.artist}
+                                imageUrl={piece.imageSource}
+                                slug={piece.slug}
+                                isFavorite={piece.isFavorite}
+                                artPieceInfo={artPieceInfo}
+                                handleToggleFavorite={handleToggleFavorite}
+                                
+                            />
+                        </ArtEntry>
+                    );
+                }):
                 artPieceInfo.map((piece) => {
                     return (
                         <ArtEntry key={piece.slug}>
@@ -20,10 +37,16 @@ export function ArtPieces({ artPieceInfo }) {
                                 artistName={piece.artist}
                                 imageUrl={piece.imageSource}
                                 slug={piece.slug}
+                                isFavorite={piece.isFavorite}
+                                artPieceInfo={artPieceInfo}
+                                handleToggleFavorite={handleToggleFavorite}
+                                
                             />
                         </ArtEntry>
                     );
-                })}
+                })
+                
+                }
         </ArtList>
     );
 }

@@ -8,38 +8,38 @@ import styled from "styled-components";
 // import components
 import { FavoriteButton } from "../favorite_button/favorite_button";
 
-// random index creator
-function getARandomPiece(data) {
-    return Math.floor(Math.random() * data.length);
-}
-
-export function Spotlight({ artPieceInfo }) {
-    const index = getARandomPiece(artPieceInfo);
-
-    const spotlightpiece = artPieceInfo[index];
-    console.log("spotlight", spotlightpiece);
+export function Spotlight({
+    artPieceInfo,
+    handleToggleFavorite,
+    spotlightPiece,
+}) {
     return (
         <Fragment>
-            <h1>{spotlightpiece.name}</h1>
+            <h1>{spotlightPiece.name}</h1>
             <Wrapper>
-                <ImageContainer>
+                {/* <Fragment>
                     <FavoriteButtonContainer>
-                        <FavoriteButton />
+                        <FavoriteButton
+                            slug={spotlightPiece.slug}
+                            artPieceInfo={artPieceInfo}
+                            handleToggleFavorite={handleToggleFavorite}
+                            isFavorite={spotlightPiece.isFavorite}
+                        />
                     </FavoriteButtonContainer>
+                </Fragment> */}
+                <ImageContainer>
                     <Link
-                        href={"/art-pieces/" + spotlightpiece.slug}
+                        href={"/art-pieces/" + spotlightPiece.slug}
                         passHref={true}
                         // target="_black"
                     >
                         <Image
                             style={{
-                                objectFit: "cover"
-        
+                                objectFit: "cover",
                             }}
-                            src={spotlightpiece.imageSource} // Replace with the path to your image
-                            alt={spotlightpiece.slug}
-            
-                            fill 
+                            src={spotlightPiece.imageSource} // Replace with the path to your image
+                            alt={spotlightPiece.slug}
+                            fill
                             sizes="70vw,
                             30vw,
                             25vw"
