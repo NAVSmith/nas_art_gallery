@@ -15,7 +15,7 @@ export function Spotlight({
 }) {
     return (
         <Fragment>
-            <h1>{spotlightPiece.name}</h1>
+            <HeadTitle>{spotlightPiece.name}</HeadTitle>
             <Wrapper>
                 {/* <Fragment>
                     <FavoriteButtonContainer>
@@ -68,4 +68,8 @@ const FavoriteButtonContainer = styled.div`
     top: 1rem;
     right: 3rem;
     z-index: 10;
+`;
+
+const HeadTitle = styled.h1`
+    text-align: center;
 `;
