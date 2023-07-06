@@ -6,7 +6,6 @@ import Link from "next/link";
 // import styles
 import styled from "styled-components";
 
-
 const pages = [
     {
         slug: "spotlight",
@@ -18,9 +17,26 @@ const pages = [
         pathTo: "/art-pieces",
         name: "Gallrey",
     },
+    {
+        slug: "favorites",
+        pathTo: "/favorites",
+        name: "Favorite Gallery",
+    },
 ];
 
+const NavLink = styled(Link)`
+    text-decoration: none;
+    padding: 0 0.3rem;
+    font-weight: bold;
+`;
 
+
+const CurrentPage = styled.span`
+    text-decoration: none;
+    padding: 0 0.3rem;
+    font-weight: bold;
+    color: brown;
+`;
 
 export function Navig({}) {
     // import the router
@@ -32,9 +48,9 @@ export function Navig({}) {
                     {pages.map((page) => (
                         <li key={page.slug}>
                             {page.pathTo === router.pathname ? (
-                                <span>{page.name}</span>
+                                <CurrentPage>{page.name}</CurrentPage>
                             ) : (
-                                <Link href={page.pathTo}>{page.name}</Link>
+                                <NavLink href={page.pathTo}>{page.name}</NavLink>
                             )}
                         </li>
                     ))}
